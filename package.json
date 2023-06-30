@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest"
+    "test": "jest",
+    "cypress:open": "CYPRESS_TEST_RUNNER=true npx cypress open",
+    "cypress:run": "CYPRESS_TEST_RUNNER=true npx cypress run"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",
@@ -27,6 +29,7 @@
     "@testing-library/user-event": "^13.5.0",
     "@types/classnames": "^2.3.1",
     "@types/jest": "^27.0.3",
+    "@types/node": "^20.3.2",
     "@types/react": "^17.0.37",
     "autoprefixer": "^10.4.0",
     "cypress": "^9.1.0",

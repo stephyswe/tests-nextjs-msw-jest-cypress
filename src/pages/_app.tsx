@@ -5,10 +5,6 @@ import type { AppProps } from "next/app";
 import Layout from "components/Layout";
 import { NextPage } from "next";
 
-if (process.env.NEXT_PUBLIC_API_MOCKING === "enabled") {
-  require("../mocks");
-}
-
 type NextPageWithMeta = NextPage & {
   title?: string;
   description?: string;
@@ -17,6 +13,10 @@ type NextPageWithMeta = NextPage & {
 type AppPropsWithMeta = AppProps & {
   Component: NextPageWithMeta;
 };
+
+if (false) {
+  require("../mocks/");
+}
 
 const App = ({ Component, pageProps }: AppPropsWithMeta) => (
   <>

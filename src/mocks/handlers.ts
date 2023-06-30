@@ -1,5 +1,5 @@
-import emailProvider from "providers/email/InMemoryProvider";
 import { rest } from "msw";
+import emailProvider from "../providers/email/InMemoryProvider";
 import { Contact } from "./types";
 
 export const handlers = [

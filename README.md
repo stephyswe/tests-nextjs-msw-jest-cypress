@@ -33,12 +33,62 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-## Devlog
+# Devlog
 
-### 2023-06-30
+## 2023-06-30
+
+### MSW
 Update MSW files & package
 npx msw init ./public --save
 
-## Run Cypress tests
 
-```bash
+### Jest, Cypress & App MSW enable/disable
+
+# App MSW
+- [x] Enable MSW in dev mode
+
+if (true) {
+  require("../mocks/");
+}
+
+# Jest - version "^27.3.1
+- [x] Enable MSW in test mode
+// jest.setup.js
+if (process.env.JEST_WORKER_ID !== undefined) {
+  const { server } = require("./src/mocks/server");
+  server.listen();
+}
+
+// jest.config.js
+```js
+...
+const customJestConfig = {
+  setupFilesAfterEnv: [
+    "<rootDir>/jest.setup.js", "..."],
+};
+```
+
+# Cypress - version ^9.1.0
+- [x] Enable MSW in test mode
+package.json
+```
+"cypress:open": "CYPRESS_TEST_RUNNER=true npx cypress open",
+"cypress:run": "CYPRESS_TEST_RUNNER=true npx cypress run"
+```
+
+cypress/tsconfig.json
+```json
+{
+  "compilerOptions": {
+    "types": ["node", "..."]
+...
+```
+
+cypress/support/commands.ts
+```js
+if (Cypress.env("TEST_RUNNER")) {
+  require("../../src/mocks");
+}
+```
+
+
