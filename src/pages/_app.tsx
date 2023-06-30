@@ -14,7 +14,7 @@ type AppPropsWithMeta = AppProps & {
   Component: NextPageWithMeta;
 };
 
-if (false) {
+if (true) {
   require("../mocks/");
 }
 

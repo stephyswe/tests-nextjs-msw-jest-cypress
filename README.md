@@ -44,14 +44,14 @@ npx msw init ./public --save
 
 ### Jest, Cypress & App MSW enable/disable
 
-# App MSW
+#### App MSW
 - [x] Enable MSW in dev mode
 
 if (true) {
   require("../mocks/");
 }
 
-# Jest - version "^27.3.1
+#### Jest - version "^27.3.1
 - [x] Enable MSW in test mode
 // jest.setup.js
 if (process.env.JEST_WORKER_ID !== undefined) {
@@ -68,7 +68,7 @@ const customJestConfig = {
 };
 ```
 
-# Cypress - version ^9.1.0
+#### Cypress - version ^9.1.0
 - [x] Enable MSW in test mode
 package.json
 ```
@@ -90,5 +90,22 @@ if (Cypress.env("TEST_RUNNER")) {
   require("../../src/mocks");
 }
 ```
+
+### Cypress Update - version ^12.16.0
+
+#### Install & Migrate
+npm install cypress@latest --save-dev
+npx cypress open
+
+"""
+Inside Cypress: migrate with automatic code changes
+"""
+
+#### MSW Fails. Fix MSW steps.
+npm install cypress-msw-interceptor msw --save-dev --force
+
+cypress/support/e2e.ts
+import 'cypress-msw-interceptor'
+import './commands'
 
 
