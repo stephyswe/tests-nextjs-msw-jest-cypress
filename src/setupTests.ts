@@ -1,15 +1,15 @@
-import '@testing-library/jest-dom/extend-expect'
+import "@testing-library/jest-dom/extend-expect";
 
-import { mswServer } from 'mocks/mswServer'
+import { server } from "mocks/server";
 
 beforeAll(() => {
-  mswServer.listen()
-})
+  server.listen();
+});
 
 afterAll(() => {
-  mswServer.close()
-})
+  server.close();
+});
 
 afterEach(() => {
-  mswServer.resetHandlers()
-})
+  server.resetHandlers();
+});
